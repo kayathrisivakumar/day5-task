@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //XHTMLHTTPREQUEST:
+
+        //XMLHttpRequest object
+        //new keyword
+        //creating an XHR object
+        //request variable =>userdefined
+        var request=new XMLHttpRequest()
+        console.log(request)
+
+        //open an connection
+        request.open('GET','https://restcountries.com/v3.1/all')
+        //sending an connection
+        request.send()
+
+        //even and function
+        //onload event=> page load
+
+        request.onload=function(){
+            console.log("page loaded")
+            //console.log(request.response)// string=>object
+            var data=JSON.parse(request.response)
+            console.log(data)
+            console.log(data[0].area)
+
+            //how to get all areas in console?
+
+            for(i=0;i<data.length;i++)
+            {
+                console.log(data[i].region, data[i].area, data[i].flag)
+                console.log(data[i].name)
+            }
+
+            // for of
+            for(var obj of data){
+             //   console.log(obj.area)
+            }
+
+            //for in loop
+            for(var index in data){
+              //  console.log(index)
+                console.log(data[index].area)
+            }
+
+        }
+        /* Resume in JSON format
+        
+        {
+  "basics": {
+    "name": "Veeramani kayathri",
+    "label": "Support Engineer",   
+    "email": "kayathrisivakumar@gmail.com",
+    "phone": "9994746460",    
+    "location": {
+      "address": "49, krishnapuram",
+      "postalCode": "624601",
+      "city": "coimbatore",
+      "country": "India",
+      },
+
+  "work": {
+    "name": "Sitel India private limited",
+    "position": "CSP",   
+    "startDate": "2015-02-01",
+    "endDate": "till now",
+    },
+  
+  "education": [{
+    "institution": "CIET",    
+    "area": "ECE",
+    "studyType": "Bachelor",
+    "startYear": "2008",
+    "endYear": "2012",
+    "score": "9.0",    
+  }],
+  
+   "skills": [{
+    "name": "Web Development",
+    "level": "Master",
+    "keywords": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ]
+  }],
+  "languages": [{
+    "language": "English","Tamil",
+    "fluency": "Native speaker"
+  }],
+  "interests": [{
+    "name": "Wildlife",
+    "keywords":[
+      "carrom",
+      "chess"    ]
+  }],
+  } 
+}*/
+
+/* difference between document and windows
+
+Document 	Window 
+1.	It represents the document loaded inside the window or browser.	It represents the browser window in which you are seeing the content.
+2.	The properties related to it are stored in the document object.	The properties related to it are stored in the window object.
+3.	It is loaded after the loading window because the window contains a document.	It is loaded before the document because window container document.
+4.	It is the root element of the document object model.	The window is the global element for all objects, functions, etc.
+5.	It is an object of window.	It is an object of the browser.
+6.	We can not access windows objects properties inside the document.	We can access document object properties inside the window.
+7.	logically:
+document:{ properties}	logically:
+    window:{
+        document:{properties}
+    }
+8.	Example: document.title will return the title of the document	Example: window.document.title will return the title of the document.
+
+*/
+    </script>
+</body>
+</html>
